@@ -6,8 +6,7 @@ mainScript: omniLatinTool.py
 version: 0.0.2
 addToMenu:
 - path: omniLatinTool.py
-  preferredName: do something
-  shortKey: [1179648, b]
+  preferredName: OmniLatinTool
 html: true
 timeStamp: 1734436800.0
 requiresVersionMajor: '4'
