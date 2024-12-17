@@ -53,7 +53,7 @@ specialChars = {
     'Esh': [dict(glyphName='summation', fallback=['E'])],
     'Thook': [dict(glyphName='T')],
     'Tretroflexhook': [dict(glyphName='T'), dict(glyphName='dotlessj', scale=(-1, 1))],
-    'Theta.LATN': [dict(glyphName='zero.LP', fallback=['O']), dict(glyphName='overlaystrokeshortcmb', fallback=['hyphen'])],
+    'Theta.LATN': [dict(glyphName='zero.LP', fallback=['O']), dict(glyphName='emdash.cap', fallback=['emdash'])],
     'Ubar': [dict(glyphName='U', decompose=False), dict(glyphName='emdash.cap', fallback=['emdash'])],
     'Vhook': [dict(glyphName='U')],
     'Vturned': [dict(glyphName='V', decompose=False, rotate=180)],

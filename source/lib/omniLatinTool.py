@@ -348,16 +348,23 @@ class drawReferenceGlyphs(Subscriber):
 						if previewAnchor.name == matchingAnchor:
 							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
 			elif anchor.name == "topRight" and currentGlyph.name not in ["O", "o"]:
-				topRightDiacritics = ["caron.slovak", "turnedcommaabovecmb"]
+				topRightDiacritics = ["caroncmb.slovak", "turnedcommaabovecmb"]
 				for diacritic in topRightDiacritics:
 					glyph = currentGlyph.font[diacritic]
 					for previewAnchor in glyph.anchors:
 						if previewAnchor.name == matchingAnchor:
 							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
-			elif anchor.name == "_middle":
+			elif anchor.name == "_middle" :
 				middleLettersPreview = ["D", "O", "o", "u"]
-				for letter in middleLettersPreview:
-					glyph = currentGlyph.font[letter]
+				for character in middleLettersPreview:
+					glyph = currentGlyph.font[character]
+					for previewAnchor in glyph.anchors:
+						if previewAnchor.name == matchingAnchor:
+							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+			elif anchor.name == "middle" :
+				middleDiacritics = ["soliduslongoverlaycmb", "overlaystrokeshortcmb", "soliduslongoverlaycmb.cap"]
+				for character in middleDiacritics:
+					glyph = currentGlyph.font[character]
 					for previewAnchor in glyph.anchors:
 						if previewAnchor.name == matchingAnchor:
 							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
