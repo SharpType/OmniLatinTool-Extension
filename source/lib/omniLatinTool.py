@@ -1273,6 +1273,15 @@ class OmniLatinToolInterface(ezui.WindowController):
 			groups[marksGroupName] = combiningAccents
 			font.save()
 
+		try:
+		    add_ss20_locl_feature(font)
+    
+		    print("locl feature generated successfully.")
+
+		except Exception as e:
+		    # Catch-all for any other exceptions
+		    print(f"An error occurred while generating the locl feature: {e}")
+
 		# Check if COMBINING_MARKS is not empty
 		if marksGroupName in font.groups and font.groups[marksGroupName]:
 			fontPath = font.path
@@ -1323,15 +1332,6 @@ class OmniLatinToolInterface(ezui.WindowController):
 				print(f"An error occurred while running MarkFeatureWriter: {e}")
 		else:
 			print("The 'COMBINING_MARKS' group does not exist or is empty.")
-
-		try:
-		    add_ss20_locl_feature(font)
-    
-		    print("locl feature generated successfully.")
-
-		except Exception as e:
-		    # Catch-all for any other exceptions
-		    print(f"An error occurred while generating the locl feature: {e}")
 
 			
 	def getWhichGlyphs(self):

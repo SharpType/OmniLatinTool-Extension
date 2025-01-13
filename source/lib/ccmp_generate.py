@@ -7,8 +7,8 @@ LC_ACCENTED_DECOMP_ALL = ["aacute", "abreve", "abreveacute", "abrevedotbelow", "
 UPPERCASE = ["A", "Aogonek", "Astroke", "AE", "B", "Bhook", "C", "Ccedilla", "Chook", "Cstroke", "D", "Dhook", "Dstroke", "Eth", "E", "Ecedilla", "Eogonek", "Eopen", "Ereversed", "Esh", "Estroke", "Schwa", "Ezh", "F", "Fhook", "G", "Ghook", "Glottalstop", "Gstroke", "H", "Hbar", "Hhook", "Hturned", "I", "Iogonek", "Ismall", "Istroke", "J", "Jcrossedtail", "Jstroke", "K", "Khook", "L", "Lbar", "Lbelt", "Lmiddletilde", "Lslash", "Lstroke", "M", "N", "Nhookleft", "Eng", "O", "Obar", "Ohorn", "Oogonek", "Oopen", "Oslash", "OE", "P", "Phook", "Thorn", "Pstroke", "Q", "R", "Rstroke", "Rtail", "S", "Scriptg", "T", "Tbar", "Thook", "Tretroflexhook", "Twithdiagonalstroke", "U", "Ubar", "Uhorn", "Uogonek", "Ustroke", "V", "Vhook", "Vturned", "W", "Whook", "X", "Y", "Yhook", "Z", "Zstroke", "Alpha.LATN", "Chi.LATN", "Iota.LATN", "Aogonek.NAV", "Eogonek.NAV", "Uogonek.NAV", "Upsilon.LATN", "Eng.locl", "Theta.LATN"]
 MARKS_CMB_ABOVE_ALL = ["dieresiscmb", "dotaccentcmb", "gravecmb", "acutecmb", "hungarumlautcmb", "circumflexcmb", "caroncmb", "brevecmb", "ringabovecmb", "tildecmb", "macroncmb", "hookabovecmb", "verticallineabovecmb", "doublegravecmb", "invertedbrevecmb", "revcommaaccentcmb", "turnedabovecmb", "turnedcommaabovecmb", "horncmb", "inverteddoublebrevecmb", "acutemacroncmb", "gravemacroncmb", "macronacutecmb", "macrongravecmb", "dieresis.cap", "dotaccent.cap", "grave.cap", "acute.cap", "hungarumlaut.cap", "circumflex.cap", "caron.cap", "breve.cap", "ring.cap", "tilde.cap", "macron.cap", "breveacute", "brevegrave", "brevehook", "brevetilde", "circumflexacute", "circumflexgrave", "circumflexhook", "circumflextilde", "dieresisacutecmb", "dieresiscaron", "dieresisgravecmb", "dieresismacron", "breveacute.cap", "brevegrave.cap", "brevehook.cap", "brevetilde.cap", "circumflexacute.cap", "circumflexgrave.cap", "circumflexhook.cap", "circumflextilde.cap", "dieresisacute.cap", "dieresiscaron.cap", "dieresisgrave.cap", "dieresismacron.cap", "doublegrave.cap", "hookabove.cap", "invertedbreve.cap", "ringacute.cap"]
 MARKS_CMB_BELOW = ["minusbelowcmb", "dotbelowcmb", "dieresisbelowcmb", "ringbelowcmb", "commaaccentbelowcmb", "cedillacmb", "ogonekcmb", "circumflexbelowcmb", "invertedbelowbrevecmb", "tildebelowcmb", "macronbelowcmb", "lowlinecmb", "righthalfringbelowcmb", "macrondoublebelowcmb"]
-MARKS_CMB_ABOVE = ["dieresiscmb", "dotaccentcmb", "gravecmb", "acutecmb", "hungarumlautcmb", "circumflexcmb", "caroncmb", "brevecmb", "ringabovecmb", "tildecmb", "macroncmb"]
-MARKS_CMB_ABOVE_CAP = ["dieresis.cap", "dotaccent.cap", "grave.cap", "acute.cap", "hungarumlaut.cap", "circumflex.cap", "caron.cap", "breve.cap", "ring.cap", "tilde.cap", "macron.cap"]
+MARKS_CMB_ABOVE = ["dieresiscmb", "dotaccentcmb", "gravecmb", "acutecmb", "hungarumlautcmb", "circumflexcmb", "caroncmb", "brevecmb", "ringabovecmb", "tildecmb", "macroncmb", "soliduslongoverlaycmb"]
+MARKS_CMB_ABOVE_CAP = ["dieresis.cap", "dotaccent.cap", "grave.cap", "acute.cap", "hungarumlaut.cap", "circumflex.cap", "caron.cap", "breve.cap", "ring.cap", "tilde.cap", "macron.cap", "soliduslongoverlaycmb.cap"]
 
 def generate_ccmp_feature(font):
     if not font:
@@ -59,8 +59,8 @@ def generate_ccmp_feature(font):
         # Combine both uppercase and lowercase accented sets for decomposition
         for g in uc_acc + lc_acc:
             glyphObj = font[g]
-            # Check if the glyph has no contours and only components
-            if glyphObj.components and len(glyphObj.contours) == 0:
+            # Check if the glyph has no contours and more than one component
+            if len(glyphObj.components) > 1 and len(glyphObj.contours) == 0:
                 # Start the substitution rule for this glyph
                 sub_rule = f"    sub {g} by"
                 # Add each component to the rule
