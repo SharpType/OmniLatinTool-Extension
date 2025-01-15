@@ -3,29 +3,33 @@ This Robofont extension is here to assist you in building your characterset up t
 
 This tool is divided in 5 accordions that regroups actions according on what they will have an effect. Only the first one **GENERAL** will be referred to for each actions of the tool. Please be very carefull on what you pre-select on this accordion. 
 
-## General
+## GENERAL
 ```
 Apply to: 	- All Glyphs
 			- Selected Glyphs
 			- Current Glyphs
 ```
-They define on which glyphs the actions are performed. The selected glyphs is pre-selected.
+They define on which glyphs the actions are performed. The *Current Glyph* is pre-selected.
 
 ```
 Overwrite Anchors / Component
 ```
 If checked, the existing anchors/components will be overwritten.
 
+## CHARACTER SET
+
 ```
 Add OmniLatin
 ```
 This button will add all the empty glyphs boxes on the font window, that we will filled up with the OmniLatin Letters.
 
-## Base Letters & Diacritics
+## BASE LETTERS & DIACRITICS
 ```
 Prebuild Characters
 ```
 This button will adds reference glyphs that will help for the design of what we call the special characters (ex: A an E wil be copied in the Æ glyph box). This function will be used for letters and diacritics. Drawing all these characters is the first step.
+
+Mark Color: RED
 
 *Note: The recipe for these pre-building glyphs are defined in the separate file `specialChars_recipe.py` in the extension.*
 
@@ -40,19 +44,27 @@ Paste component
 ```
 This button will adds components, nothing else. It mainly use to add components for the diacritics that has identical designs.
 
+Mark Color: DARK BLUE
+
 ```
-Fix Diacritics Width
+Center Glyphs
+```
+This button will center the glyph on the width it already have.
+
+
+```
+Fix Diacritics Sidebearings
 ```
 The tool has pre-saved the values ​​of the diacritics widths:
 
 1. the cmb = zero width
 2. the doube cmb = zero width
 3. the .cap = zero width
-4. the classic one = 500 width
+4. the modifiers = width of the sign + 50 units on the right and left sidebearings
 
-If you wish to change the value of the 500 width, use the textfield and re-hit `Fix Diactritics Width`
+If you wish to change the value of the 50 units, use the textfield and re-hit `Fix Diactritics Sidebearings`
 
-## Anchors & Preview
+## ANCHORS & PREVIEW
 ```
 Remove Anchors
 ```
@@ -75,19 +87,19 @@ If your glpsh is made out of a compenent you can get the well placed anchors for
 ```
 Anchor Preview (Glyph window)
 ```
-You can preview the diacritics on a letter or a letter above or below the diacritic, according to the existing anchors.
+You can preview the diacritics on a letter. You can also preview a letter when you are in a diacritic glpyh window. The placement of the preview is made accordingly to the existing anchors.
 
 ```
 Anchor Preview Glyph: [textfield]
 ```
-The OmniLatin Tool automatically picks some accents or glyphs to showcase but if you want a specific glyph, you can type it in the 'Anchor Preview Glyph' textfield.
+The OmniLatin Tool automatically picks some accents or glyphs to showcase but if you want to see a specific letter, you can type it in the *Anchor Preview Glyph* textfield.
 
 ```
-Component Preview
+Component Preview (SpaceCenter)
 ```
 The Component Preview happens in the SpaceCenter. It will show all glyphs that use the currentGlyph as a component.
 
-## Accented Characters
+## ACCENTED CHARACTERS
 
 ```
 Build Accented Characters
@@ -102,7 +114,7 @@ Build Characters from Alternates
 Before using this button, make sure to have all the anchors needed on those alternate glyphs.  This button will build all the accented characters needed for your alternate letter. ⚠️ The behavior of this button is different than the others. You need to select the alternate character and then hit the button, the tool will take care of the rest. 
 
 
-## Generate
+## ENCODING & FEATURES
 
 ```
 Fix Unicodes
@@ -116,7 +128,8 @@ This step is crutial, if you want to test your font we advise you to do it befor
 
 It will add also add in the features panel of your font the languages statements and specific features for the identified languages.
 
-## The future of this tool
+
+# The future of this tool
 
 We decided to share the OmniLatin Tool as an open source tool because this knowledge needs to be shared and used so all the latin languages are represented. We don't pretend that this tool is perfect and we are very looking forward to the improvements from the type community.
 
@@ -126,7 +139,7 @@ We invite you to pull request here if you are able to contribute to this great t
 
 This tool was design for the software Robofont we don't have the knowledge in house to develop it for Glyphs. If you are interested of doing it feel free to reach ou to us!
 
-## Thank you
+# Thank you
 The first Thank you goes to Marte Verhaegen, she wrote most of this tool code. She came up with the most creative solution to all our wishes. Thank Marte!
 
 The Sharp Type team behind this tool is Léna Le Pommelet, My-Lan Thuong and Clavin Kwok. My-Lan and Léna spend days to imagine the interface, the behavior, the UX, to write, correct and add dictionaries or even add functions. Calvin join for the last but not least step, he wrote the process which allow the font to handle OmniLatin support.
