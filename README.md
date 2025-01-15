@@ -112,7 +112,7 @@ Add unicode value to the OmniLatin glyphs. Some letters have double unicode. The
 ```
 Generate Features
 ```
-This step is crutial, if you want to test your font we advise you to do it before. It will create …………………… @Calvin can you specify?. Or change it, if you designed several buttons.
+This step is crutial, if you want to test your font we advise you to do it before. It will create ccmp feature, locl feature, mark feature and mkmk feature.
 
 It will add also add in the features panel of your font the languages statements and specific features for the identified languages.
 
