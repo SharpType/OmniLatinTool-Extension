@@ -42,7 +42,7 @@ standardAccentPlacements = [
 	dict(name="ogonek", horizontal=2, vertical=2, point=True),
 	dict(name="_ogonek", horizontal=2, vertical=0, point=True),
 	dict(name="topRight", horizontal=2, vertical=0, extraX=20),
-	dict(name="_topRight", horizontal=2, vertical=2, point=True),
+	dict(name="_topRight", horizontal=0, vertical=0),
 	dict(name="middle", horizontal=1, vertical=1),
 	dict(name="_middle", horizontal=1, vertical=1),
 	dict(name="horn", horizontal=2, vertical=0),
@@ -170,9 +170,16 @@ def createAndFillComposedGlyph( font, overwrite, glyphName, categoryMarkColor, n
 	
 	# Make sure nameOfGlyphToGetAccentsFrom has a value, falling back to glyphName.
 	nameOfGlyphToGetAccentsFrom = nameOfGlyphToGetAccentsFrom or glyphName
-	
-	
+
 	#print( glyphName, nameOfGlyphToGetAccentsFrom )
+	
+	# Look up this glyph in the database
+	glyphData = definedGlyphset[ nameOfGlyphToGetAccentsFrom ]
+	
+	# and make sure it has info about the base glyph name and accents (otherwise stop).
+	if 'baseGlyphs' not in glyphData or 'accents' not in glyphData :
+		return
+	
 	
 	# Create and/or clear the glyph in the font.
 	# If the glyph with glyphName is already in the font;
@@ -181,7 +188,7 @@ def createAndFillComposedGlyph( font, overwrite, glyphName, categoryMarkColor, n
 		# If the glyph isn't empty, and overwriting is not allowed, stop this function.
 		# Also stop if the glyph has any paths/contours (as something has been decomposed
 		# for a custom design).
-		if (existingGlyph.bounds and not overwrite) or existingGlyph.contours :
+		if (existingGlyph.bounds and not overwrite) or existingGlyph.contours : #or ('accents' not in existingGlyph)
 			return
 		# Otherwise, proceed to clear the glyph (delete all paths, components, guidelines, etc.)
 		else :
@@ -193,13 +200,7 @@ def createAndFillComposedGlyph( font, overwrite, glyphName, categoryMarkColor, n
 	# At this point we know the glyph is in the font and ready for accent components.
 	glyph = font[ glyphName ]
 	
-	# Look up this glyph in the database
-	glyphData = definedGlyphset[ nameOfGlyphToGetAccentsFrom ]
-	
-	# and make sure it has info about the base glyph name and accents (otherwise stop).
-	if 'baseGlyphs' not in glyphData or 'accents' not in glyphData :
-		return
-	
+
 	# Get the name of its base glyph (its *first* base glyph)
 	baseGlyphName = glyphData['baseGlyphs'][0]
 	
@@ -241,7 +242,11 @@ def createAndFillComposedGlyph( font, overwrite, glyphName, categoryMarkColor, n
 		glyph.width = constructionGlyph.width
 		
 		# Assign a mark color to this glyph.
-		glyph.markColor = categoryMarkColor
+		if glyphName in ("Aogonek", "Aogonek.NAV", "Astroke", "Cstroke", "Eth", "Eogonek", "Eogonek.NAV", "Estroke", "Gstroke", "IJacute", "Ldot", "Lstroke", "Lbar", "Lmiddletilde", "Ohorn", "Ohornacute", "Ohorndotbelow", "Ohorngrave", "Ohornhookabove", "Ohorntilde", "Oslash", "Oslashacute", "Rstroke", "Tbar", "Twithdiagonalstroke", "Uhorn", "Uhornacute", "Uhorndotbelow", "Uhorngrave", "Uhornhookabove", "Uhorntilde", "Ustroke", "Zstroke", "Pstroke", "astroke", "aogonek", "aogonek.NAV", "cstroke","dcroat", "eogonek", "eogonek.NAV", "estroke", "gstroke", "hbar", "ldot", "lstroke", "lmiddletilde", "ohorn", "ohornacute", "ohorndotbelow", "ohorngrave", "ohornhookabove", "ohorntilde", "uhornacute", "oogonek", "oslash", "rstroke", "tstroke", "uhorn", "uhorndotbelow", "uhorngrave", "uhornhookabove", "uhorntilde", "uogonek", "uogonek.NAV", "ustroke",  "zstroke"):
+			glyph.markColor = (1,0.5,0,.4)
+		else:
+			glyph.markColor = categoryMarkColor
+		
 
 def addChosenGlyphset (chosenGlyphset):
 	font = CurrentFont()
@@ -307,6 +312,16 @@ class drawReferenceGlyphs(Subscriber):
 		currentGlyph = CurrentGlyph()
 		matchingGlyphs = {}
 		font = CurrentFont()
+		
+		def previewMatchingAnchor(glyphList):
+			
+			for glyphName in glyphList:
+				if glyphName in font :
+					glyph = currentGlyph.font[glyphName]
+					for previewAnchor in glyph.anchors:
+						if previewAnchor.name == matchingAnchor:
+							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+			
 		if currentGlyph is None:
 			return
 		
@@ -327,91 +342,66 @@ class drawReferenceGlyphs(Subscriber):
 						
 			## SPECIAL PREVIEW CASES
 			elif anchor.name == "top" and currentGlyph.name in ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Alpha.LATN", "AE", "Bhook", "Cstroke", "Dhook", "Dafrican", "Dcroat", "Eth", "Dstroke", "Ereversed", "Schwa", "Eopen", "Fhook", "Gstroke", "Scriptg", "Hbar", "Hhook", "Iogonek", "Istroke", "Ismall", "Iota.LATN", "Jstroke", "Khook", "Nhookleft", "Eng", "Eng.locl", "OE", "Phook", "Thorn", "Ohorn", "Oslash", "Obar", "Oopen", "Rstroke", "Rtail", "yr", "Twithdiagonalstroke", "Thook", "Tretroflexhook", "Theta.LATN", "Ubar", "Uhorn", "Ustroke", "Vhook", "Upsilon.LATN", "Vturned", "Whook", "Yhook", "Yturnedsans", "Chi.LATN", "Zstroke", "Ezh", "Gamma.LATN", "Glottalstop", "Esh", "Pstroke", "Hturned", "Jcrossedtail"]:
-				topDiacritics = ["dotaccent.cap", "circumflex.cap"]
-				for diacritic in topDiacritics:
-					glyph = currentGlyph.font[diacritic]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList = ["dotaccent.cap", "circumflex.cap"]
+					)
+
 			elif anchor.name == "top":
-				topDiacritics = ["dotaccentcmb", "circumflexcmb"]
-				for diacritic in topDiacritics:
-					glyph = currentGlyph.font[diacritic]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList = ["dotaccentcmb", "circumflexcmb"]
+					)
+					
 			elif anchor.name == "bottom":
-				bottomDiacritics = ["macronbelowcmb", "dotbelowcmb"]
-				for diacritic in bottomDiacritics:
-					glyph = currentGlyph.font[diacritic]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList =  ["macronbelowcmb", "dotbelowcmb"]
+					)
+
 			elif anchor.name == "topRight" and currentGlyph.name not in ["O", "o"]:
-				topRightDiacritics = ["caroncmb.slovak", "turnedcommaabovecmb"]
-				for diacritic in topRightDiacritics:
-					glyph = currentGlyph.font[diacritic]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList = ["caroncmb.slovak", "turnedcommaabovecmb"]
+					)
+
 			elif anchor.name == "_middle" :
-				middleLettersPreview = ["D", "O", "o", "u"]
-				for character in middleLettersPreview:
-					glyph = currentGlyph.font[character]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList = ["T", "o"]
+					)
+
 			elif anchor.name == "middle" :
-				middleDiacritics = ["soliduslongoverlaycmb", "overlaystrokeshortcmb", "soliduslongoverlaycmb.cap"]
-				for character in middleDiacritics:
-					glyph = currentGlyph.font[character]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList = ["soliduslongoverlaycmb", "overlaystrokeshortcmb", "soliduslongoverlaycmb.cap"]
+					)
+
 							
 			elif "slovak" in currentGlyph.name:
-				lowercasePreview = ["d", "l", "t"]
-				for letter in lowercasePreview:
-					glyph = currentGlyph.font[letter]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList = ["d", "l", "t"]
+					)
+
 			elif "horn" in currentGlyph.name:
-				hornLettersPreview = ["O", "o", "U", "u"]
-				for letter in hornLettersPreview:
-					glyph = currentGlyph.font[letter]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList = ["O", "o", "U", "u"]
+					)
+
 			elif "dotrightabove" in currentGlyph.name:
-				rightDotLettersPreview = ["O", "o"]
-				for letter in rightDotLettersPreview:
-					glyph = currentGlyph.font[letter]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList = ["O", "o"]
+					)
+
 			elif "ogonek" in currentGlyph.name:
-				ogonekLettersPreview = ["I", "a", "E", "e"]
-				for letter in ogonekLettersPreview:
-					glyph = currentGlyph.font[letter]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
-							
+				previewMatchingAnchor(
+					glyphList = ["I", "a", "E", "e"]
+					)
+		
 			elif "cmb" in currentGlyph.name and (anchor.name == "_bottom" or "_top"):
-				lowercasePreview = ["a", "n", "o"]
-				for letter in lowercasePreview:
-					glyph = currentGlyph.font[letter]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList = ["a", "n", "o"]
+					)
+
 			elif ".cap" in currentGlyph.name and (anchor.name == "_bottom" or "_top"):
-				uppercasePreview = ["A", "H", "O"]
-				for letter in uppercasePreview:
-					glyph = currentGlyph.font[letter]
-					for previewAnchor in glyph.anchors:
-						if previewAnchor.name == matchingAnchor:
-							matchingAnchors[glyph] = (previewAnchor.x, previewAnchor.y)
+				previewMatchingAnchor(
+					glyphList = ["A", "H", "O"]
+					)
+
 			else:
 				i = 0
 				for glyphName in currentGlyph.font.glyphOrder:
@@ -542,9 +532,8 @@ class OmniLatinToolInterface(ezui.WindowController):
 		> Scale Ratio for Ordinals: [_0.60_]	@scaleRatioOrdinalTextfield
 		> (Paste Components)	@addComponentsButton
 		> (Center Glyphs)	@centerGlyphButton
-		> * HorizontalStack
-		>> (Fix Diacritics Width) 	@fixDiacriticsWidthButton
-		>> Width: [_500_]	@diacriticsWidthField
+		> (Fix Diacritics Sidebearings) 	@fixDiacriticsWidthButton
+		> Modifiers Sidebearings: [_50_]	@diacriticsWidthField
 		---
 
 		* Accordion: ANCHORS & PREVIEW	@anchorsAccorion
@@ -564,9 +553,10 @@ class OmniLatinToolInterface(ezui.WindowController):
 		> (Build Characters from Alternate)	@buildAlternatesGlyphsButton
 		---
 
-		* Accordion: GENERATE   @generateAccordion
+		* Accordion: ENCODING & FEATURES   @generateAccordion
 		> (Fix Unicodes)	@fixUnicodeButton
 		> (Generate Features)	@markFeaturesButton
+		> !* ! Check Features panel before generating again
 		
 		"""
 
@@ -598,8 +588,11 @@ class OmniLatinToolInterface(ezui.WindowController):
 			centerGlyphButton=dict(
 				width=toolWidth,
 			),
+			fixDiacriticsWidthButton=dict(
+				width=toolWidth,
+			),
 			diacriticsWidthField=dict(
-				width=toolWidth-150,
+				#width=toolWidth-120,
 				valueType="number",
 			),
 			placeAnchorsButton=dict(
@@ -701,6 +694,7 @@ class OmniLatinToolInterface(ezui.WindowController):
 							x, y = buildBlock['translate']
 							
 							capValue = (self.currentFont.info.capHeight - self.currentFont.info.xHeight)/2
+							capAccents = self.currentFont.info.capHeight - self.currentFont.info.xHeight
 							
 							for i, move in enumerate(buildBlock['translate']):
 								
@@ -726,6 +720,11 @@ class OmniLatinToolInterface(ezui.WindowController):
 										x = capValue
 									if i == 1:
 										y = capValue
+								if move == 'capAccents':
+									if i == 0:
+										x = capAccents
+									if i == 1:
+										y = capAccents
 								if move == 'ordinalHeight':
 									if i == 0:
 										x = round(self.currentFont.info.ascender - self.currentFont.info.ascender*scaleRatio)
@@ -815,14 +814,14 @@ class OmniLatinToolInterface(ezui.WindowController):
 				glyphData = definedGlyphset[glyphName]
 				glyph = font[glyphName]
 				
-				if (glyph.components and not doOverwrite): # Add " or glyph.contours" if you don't want to erase decomposed glyphs
+				if (glyph.components and not doOverwrite) or glyph.contours or ('accents' in glyphData) : # won't erase decomposed glyphs
 					continue
 				
 				with glyph.undo("Place Component(s)"):
-					glyph.clearComponents()
-					glyphWidth = 0
 
 					if 'baseGlyphs' in glyphData: # and glyph.bounds == None:
+						glyph.clearComponents()
+						glyphWidth = 0
 						for baseGlyphName in glyphData['baseGlyphs']:
 							newCompo = glyph.appendComponent(baseGlyphName)
 							newCompo.moveBy((glyphWidth, 0))
@@ -836,17 +835,17 @@ class OmniLatinToolInterface(ezui.WindowController):
 
 						glyph.width = glyphWidth
 							
-					if 'accents' in glyphData:
-						for accent in glyphData['accents']:
-							accentData = accent.split('@')
-
-							if len(accentData) > 1:
-								accentName, accentPosition = accentData
-								glyph.appendComponent(accentName)
-							else:
-								glyph.appendComponent(accent)
-
-							glyph.markColor = addComponentMarkColor
+					# if 'accents' in glyphData:
+# 						for accent in glyphData['accents']:
+# 							accentData = accent.split('@')
+# 
+# 							if len(accentData) > 1:
+# 								accentName, accentPosition = accentData
+# 								glyph.appendComponent(accentName)
+# 							else:
+# 								glyph.appendComponent(accent)
+# 
+# 							glyph.markColor = addComponentMarkColor
 
 		print(f"OmniLatin Tool: added components")
 
@@ -1144,7 +1143,7 @@ class OmniLatinToolInterface(ezui.WindowController):
 	def fixDiacriticsWidthButtonCallback(self, sender):
 		font = CurrentFont()
 		glyphSet = self.getWhichGlyphs()
-		diacriticsWidth = self.w.getItemValue("diacriticsWidthField")
+		sidebearingValue = self.w.getItemValue("diacriticsWidthField")
 
 		for glyphName in glyphSet:
 			if glyphName in definedGlyphset and glyphName in font.lib["public.glyphOrder"]:
@@ -1184,12 +1183,8 @@ class OmniLatinToolInterface(ezui.WindowController):
 											glyph.moveBy((-moveByXValue, 0))
 							glyph.width = 0
 						else:
-							oldWidth = glyph.width
-							contourWidth = oldWidth - (glyph.angledLeftMargin + glyph.angledRightMargin)
-							
-							glyph.angledLeftMargin = (diacriticsWidth - contourWidth)/2
-							glyph.angledRightMargin = (diacriticsWidth - contourWidth)/2
-							#glyph.width = diacriticsWidth
+							glyph.angledLeftMargin = sidebearingValue
+							glyph.angledRightMargin = sidebearingValue
 		print(f"OmniLatin Tool: Fixed diacritics width")
 		
 	def fixUnicodeButtonCallback(self, sender):
@@ -1449,8 +1444,6 @@ class AnchorSheetController(ezui.WindowController):
 		self.w.close()
 
 	def okButtonCallback(self, sender): 	
-		verticalAccentPlacements = self.w.getItemValue("verticalPositionsTextEditor").split(" ")
-		self.parentController.verticalAccentPlacements = verticalAccentPlacements
 
 		tableItems = self.w.getItem("complexTable").get()
 
