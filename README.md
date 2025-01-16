@@ -5,7 +5,7 @@ This tool is divided in 5 accordions that regroups actions according on what the
 
 ## GENERAL
 ```
-Apply to: 	- All Glyphs
+Apply to: 		- All Glyphs
 			- Selected Glyphs
 			- Current Glyphs
 ```
