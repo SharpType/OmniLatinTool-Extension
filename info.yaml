@@ -3,7 +3,7 @@ developer: Sharp Type
 developerURL: http://github.com/SharpType
 launchAtStartUp: false
 mainScript: omniLatinTool.py
-version: 0.0.5
+version: 1.0.0
 addToMenu:
 - path: omniLatinTool.py
   preferredName: OmniLatinTool
