@@ -358,7 +358,7 @@ class drawReferenceGlyphs(Subscriber):
 
 			elif anchor.name == "topRight" and currentGlyph.name not in ["O", "o"]:
 				previewMatchingAnchor(
-					glyphList = ["caroncmb.slovak", "turnedcommaabovecmb"]
+					glyphList = ["caroncmb.slovak"]
 					)
 
 			elif anchor.name == "_middle" :
@@ -368,7 +368,7 @@ class drawReferenceGlyphs(Subscriber):
 
 			elif anchor.name == "middle" :
 				previewMatchingAnchor(
-					glyphList = ["soliduslongoverlaycmb", "overlaystrokeshortcmb", "soliduslongoverlaycmb.cap"]
+					glyphList = ["overlaystrokeshortcmb"]
 					)
 
 							
@@ -1254,6 +1254,12 @@ class OmniLatinToolInterface(ezui.WindowController):
 		    # Catch-all for any other exceptions
 		    print(f"An error occurred while generating the ccmp feature: {e}")
 		
+		if marksGroupName in font.groups:
+		    if not font.groups[marksGroupName]:
+		        # If it's empty, remove it
+		        del font.groups[marksGroupName]
+		        print(f"Removed empty group '{marksGroupName}' from font.groups.")
+		
 		if not marksGroupName in font.groups:
 			print(f"OmniLatin Tool: Adding new group called '{marksGroupName}'")
 			combiningAccents = []
@@ -1313,6 +1319,11 @@ class OmniLatinToolInterface(ezui.WindowController):
 					"feature mkmk {\n"
 					"	 include (mkmk.fea);\n"
 					"} mkmk;\n"
+					"\n"
+					"#/!\ Delete this section before generating features again\n"
+					"#                     + languagesystem at the very top\n"
+					"# ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑  OMNILATIN TOOL FEATURES ADDITIONS  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑\n"
+					"# ---------------------------------------------------------------------------------------------\n"
 				)
 
 				currentFeatures = font.features.text or ""

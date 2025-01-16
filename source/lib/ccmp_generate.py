@@ -45,7 +45,8 @@ def generate_ccmp_feature(font):
 
     # Initialize the feature code string
     feature_code = ""
-
+    feature_code += "# ---------------------------------------------------------------------------------------------\n"
+    feature_code += "# ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  OMNILATIN TOOL FEATURES ADDITIONS  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓\n"
     # Add class definitions to feature_code
     feature_code += "# Class Definitions\n"
     for cdef in class_defs:
