@@ -139,17 +139,10 @@ We invite you to pull request here if you are able to contribute to this great t
 
 This tool was design for the software Robofont we don't have the knowledge in house to develop it for Glyphs. If you are interested of doing it feel free to reach ou to us!
 
-# Thank you
-The first Thank you goes to Marte Verhaegen, she wrote most of this tool code. She came up with the most creative solution to all our wishes. Thank Marte!
+# Credits
 
-The Sharp Type team behind this tool is Léna Le Pommelet, My-Lan Thuong and Clavin Kwok. My-Lan and Léna spend days to imagine the interface, the behavior, the UX, to write, correct and add dictionaries or even add functions. Calvin join for the last but not least step, he wrote the process which allow the font to handle OmniLatin support.
+The OmniLatin tool was co-directed by Léna Le Pommelet & My-Lan Thuong and developed by Marte Verhagen, with the contribution of Calvin Kwok, My-Lan Thuong and Peter Nowell.
 
-Thank you to Peter Nowell for the precious help and advice.
+The OmniLatin character set is based on the research by My-Lan Thuong, Cris Hernández, Glenda Bellarosa, the Rosetta Type team (Hyperglot) and the Google team (Shaperglot).
 
-This tool would not exist without Frederick Berlean (Robofont) and Tal Lemming (ezui), thank you to both of them.
-
-Thank you Frank Grießhammer (Adobe) for the Mark Feature Writer.
-
-Thank you Petr van Blokland who inspired us with his Font Assistant.
-
-The OmniLatin character set was build with the work of Glenda Bellarosa, Cris Hernández, My-Lan Thuong, the Rosetta Type team for the Hyperglot and the Google team for the Shaperglot.
+Thank you Frederick Berlean (Robofont), Tal Lemming (ezui), Frank Grießhammer (Mark Feature Writer) and Petr van Blokland who inspired us with his Font Assistant.
