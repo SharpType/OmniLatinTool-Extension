@@ -124,24 +124,26 @@ Add unicode value to the OmniLatin glyphs. Some letters have double unicode. The
 ```
 Generate Features
 ```
-This step is crutial, if you want to test your font we advise you to do it before. It will create ccmp feature, locl feature, mark feature and mkmk feature.
+Behind the scene, this button will generate the combining marks list, the languagesytem list, the decomposition list, the locl feature and the cmcp feature, and writes them in the Features panel of the font. It also builds two external files: mkmk.fea and mark.fea.
 
-It will add also add in the features panel of your font the languages statements and specific features for the identified languages.
+*Note: If you need to generate the features a second time, make sure to delete the files and features in the panel beforehand.*
 
 
 # The future of this tool
 
-We decided to share the OmniLatin Tool as an open source tool because this knowledge needs to be shared and used so all the latin languages are represented. We don't pretend that this tool is perfect and we are very looking forward to the improvements from the type community.
+We decided to share the OmniLatin Tool as an open source tool because this knowledge needs to be shared and used for a better representation of all the Latin languages.
 
-The localized feature for example could be expended to other languages with their specifications.
+[→ Read the Case Study about the OmniLatin Research](https://www.sharptype.co/case-studies/omni-latin-research)
 
-We invite you to pull request here if you are able to contribute to this great tool!
+This extension was designed for the software RoboFont and is available on Mechanic 2 and on Github. The tool and research are always ongoing projects and we are looking forward to hear back from the type community about what we could add or improve. For example, the localized features could be expended to other languages with their specifications. We are also always looking for samples of texts in rare languages.
 
-This tool was design for the software RoboFont we don't have the knowledge in house to develop it for Glyphs. If you are interested of doing it feel free to reach out to us!
+We invite you to pull a request on Github if you are able to contribute to this great tool! If you are interested to develop it for Glyphs App, feel free to do it.
 
 # Credits
 
-The OmniLatin tool was co-directed by Léna Le Pommelet & My-Lan Thuong and developed by Marte Verhagen, with the contribution of Calvin Kwok, My-Lan Thuong and Peter Nowell.
+The OmniLatin tool was co-directed by Léna Le Pommelet & My-Lan Thuong.
+
+It was developed by Marte Verhagen, with the contribution of Calvin Kwok, My-Lan Thuong and Peter Nowell.
 
 The OmniLatin character set is based on the research by My-Lan Thuong, Cris Hernández, Glenda Bellarosa, the Rosetta Type team (Hyperglot) and the Google team (Shaperglot).
 
