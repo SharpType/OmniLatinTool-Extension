@@ -1,5 +1,5 @@
 # OmniLatinTool
-This Robofont extension is here to assist you in building your characterset up to OmniLatin. Find [here](https://www.sharptype.co/case-studies/omni-latin-tool) on Sharp Type website a step by step explanation. Here, you will find a description of each button of the tool and the action they can have on your font file.
+This RoboFont extension is here to assist you in building your characterset up to OmniLatin. Find [here](https://www.sharptype.co/case-studies/omni-latin-tool) on Sharp Type website a step by step explanation. Here, you will find a description of each button of the tool and the action they can have on your font file.
 
 This tool is divided in 5 accordions that regroups actions according on what they will have an effect. Only the first one **GENERAL** will be referred to for each actions of the tool. Please be very carefull on what you pre-select on this accordion. 
 
@@ -137,7 +137,7 @@ The localized feature for example could be expended to other languages with thei
 
 We invite you to pull request here if you are able to contribute to this great tool!
 
-This tool was design for the software Robofont we don't have the knowledge in house to develop it for Glyphs. If you are interested of doing it feel free to reach ou to us!
+This tool was design for the software RoboFont we don't have the knowledge in house to develop it for Glyphs. If you are interested of doing it feel free to reach out to us!
 
 # Credits
 
@@ -145,4 +145,4 @@ The OmniLatin tool was co-directed by Léna Le Pommelet & My-Lan Thuong and deve
 
 The OmniLatin character set is based on the research by My-Lan Thuong, Cris Hernández, Glenda Bellarosa, the Rosetta Type team (Hyperglot) and the Google team (Shaperglot).
 
-Thank you Frederick Berlean (Robofont), Tal Lemming (ezui), Frank Grießhammer (Mark Feature Writer) and Petr van Blokland who inspired us with his Font Assistant.
+Thank you Frederik Berlaen (RoboFont), Tal Leming (Ezui), Frank Grießhammer (Mark Feature Writer) and Petr van Blokland who inspired us with his Font Assistant.
