@@ -1,9 +1,9 @@
-name: OmniLatin Tool
+name: OmniLatinTool
 developer: Sharp Type
 developerURL: http://github.com/SharpType
 launchAtStartUp: false
 mainScript: omniLatinTool.py
-version: 1.0.1
+version: 1.0.2
 addToMenu:
 - path: omniLatinTool.py
   preferredName: OmniLatin Tool
