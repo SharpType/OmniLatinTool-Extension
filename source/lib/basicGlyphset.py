@@ -15,7 +15,7 @@ OmniLatin = {
 	'N': dict(unicode=[0x4e], anchors=['bottom', 'top', 'topRight']),
 	'O': dict(unicode=[0x4f], anchors=['top', 'bottom', 'ogonek', 'topRight', 'middle', 'horn']),
 	'P': dict(unicode=[0x50], anchors=['top', 'bottom', 'topRight', 'middle']),
-	'Q': dict(unicode=[0x51], anchors=['topRight']),
+	'Q': dict(unicode=[0x51], anchors=['top',' topRight']),
 	'R': dict(unicode=[0x52], anchors=['top', 'bottom', 'topRight', 'middle']),
 	'S': dict(unicode=[0x53], anchors=['top', 'bottom', 'topRight', 'ogonek']),
 	'T': dict(unicode=[0x54], anchors=['top', 'bottom', 'topRight', 'middle']),
@@ -662,7 +662,7 @@ OmniLatin = {
 	'clicklateral': dict(unicode=[0x01C1], baseGlyphs=['clickdental', 'clickdental']),
 	'clickalveolar': dict(unicode=[0x01C2]),
 	
-	'a.sup': dict(unicode=[0x00AA]), #+1D43
+	'a.sup': dict(unicode=[0x00AA, 0x1D43]),
 	'b.sup': dict(unicode=[0x1D47]),
 	'c.sup': dict(unicode=[0x1D9C]),
 	'd.sup': dict(unicode=[0x1D48]),
@@ -676,8 +676,9 @@ OmniLatin = {
 	'l.sup': dict(unicode=[0x02E1]),
 	'm.sup': dict(unicode=[0x1D50]),
 	'n.sup': dict(unicode=[0x207F]),
-	'o.sup': dict(unicode=[0x00BA]), #+1D52
-	'p.sup': dict(unicode=[0x1D56]),	
+	'o.sup': dict(unicode=[0x00BA, 0x1D52]),
+	'p.sup': dict(unicode=[0x1D56]),
+	'q.sup': dict(),	
 	'r.sup': dict(unicode=[0x02B3]),
 	's.sup': dict(unicode=[0x02E2]),
 	't.sup': dict(unicode=[0x1D57]),
