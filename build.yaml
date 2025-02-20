@@ -2,7 +2,6 @@ libFolder: source/lib
 resourcesFolder: source/resources
 htmlFolder: source/html
 requirements: |
-  DrawBot
 license: |
   MIT License
 
