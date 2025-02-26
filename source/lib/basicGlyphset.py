@@ -750,7 +750,7 @@ OmniLatin = {
 	'macrondoublebelowcmb': dict(unicode=[0x035F], anchors=['_bottom', 'bottom'], isAccent=True),
 	'minusbelowcmb': dict(unicode=[0x320], anchors=['_bottom', 'bottom'], isAccent=True),
 	'lowlinecmb': dict(unicode=[0x332], anchors=['_bottom', 'bottom'], isAccent=True),
-	'tildebelowcmb': dict(anchors=['_bottom', 'bottom'], isAccent=True),
+	'tildebelowcmb': dict(unicode=[0x330], anchors=['_bottom', 'bottom'], isAccent=True),
 	'circumflexbelowcmb': dict(unicode=[0x032D], anchors=['_bottom', 'bottom'], isAccent=True),
 	'dieresisbelowcmb': dict(unicode=[0x0324], anchors=['_bottom', 'bottom'], isAccent=True),
 	'ringbelowcmb': dict(unicode=[0x0325], anchors=['_bottom', 'bottom'], isAccent=True),
