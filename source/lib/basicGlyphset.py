@@ -203,8 +203,8 @@ OmniLatin = {
 	'Lmiddletilde': dict(unicode=[0x2c62], baseGlyphs=['L'], accents=['tildecmb@middle'], anchors=['top', 'bottom', 'caron']),
 	'LJ': dict(unicode=[0x01c7], baseGlyphs=['L', 'J']),
 	'Lj': dict(unicode=[0x01c8], baseGlyphs=['L', 'j']),
-	'Lambda.LATN': dict(unicode=[0xa7da]),
-	'Lambdastroke.LATN': dict(unicode=[0xa7dc]),
+	'Lambda.LATN': dict(unicode=[0xa7da], anchors=['top', 'bottom', 'topRight']),
+	'Lambdastroke.LATN': dict(unicode=[0xa7dc], baseGlyphs=['Lambda.LATN'], accents=['overlaystrokeshortcmb@top']),
 
 	'Macute': dict(unicode=[0x1e3e], baseGlyphs=['M'], accents=['acute.cap@top']),
 
@@ -508,8 +508,8 @@ OmniLatin = {
 	'lbelt': dict(unicode=[0x26c], baseGlyphs=['l'], anchors=['bottom', 'top']),
 	'lmiddletilde': dict(unicode=[0x26b], baseGlyphs=['l'], accents=['tildecmb@middle'], anchors=['caron', 'bottom', 'top']),
 	'lj': dict(unicode=[0x01c9], baseGlyphs=['l', 'j']),
-	'lambda.LATN': dict(unicode=[0xa7db]),
-	'lambdastroke': dict(unicode=[0x019B], baseGlyphs=['lambda.LATN']),
+	'lambda.LATN': dict(unicode=[0xa7db], anchors=['top', 'bottom','topRight']),
+	'lambdastroke.LATN': dict(unicode=[0x019B], baseGlyphs=['lambda.LATN'], accents=['overlaystrokeshortcmb@top']),
 
 	'macute': dict(unicode=[0x1e3f], baseGlyphs=['m'], accents=['acutecmb@top']),
 
