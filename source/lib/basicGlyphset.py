@@ -203,6 +203,8 @@ OmniLatin = {
 	'Lmiddletilde': dict(unicode=[0x2c62], baseGlyphs=['L'], accents=['tildecmb@middle'], anchors=['top', 'bottom', 'caron']),
 	'LJ': dict(unicode=[0x01c7], baseGlyphs=['L', 'J']),
 	'Lj': dict(unicode=[0x01c8], baseGlyphs=['L', 'j']),
+	'Lambda.LATN': dict(unicode=[0xa7da]),
+	'Lambdastroke.LATN': dict(unicode=[0xa7dc]),
 
 	'Macute': dict(unicode=[0x1e3e], baseGlyphs=['M'], accents=['acute.cap@top']),
 
@@ -506,6 +508,8 @@ OmniLatin = {
 	'lbelt': dict(unicode=[0x26c], baseGlyphs=['l'], anchors=['bottom', 'top']),
 	'lmiddletilde': dict(unicode=[0x26b], baseGlyphs=['l'], accents=['tildecmb@middle'], anchors=['caron', 'bottom', 'top']),
 	'lj': dict(unicode=[0x01c9], baseGlyphs=['l', 'j']),
+	'lambda.LATN': dict(unicode=[0xa7db]),
+	'lambdastroke': dict(unicode=[0x019B], baseGlyphs=['lambda.LATN']),
 
 	'macute': dict(unicode=[0x1e3f], baseGlyphs=['m'], accents=['acutecmb@top']),
 
@@ -656,7 +660,7 @@ OmniLatin = {
 	'glottalstop': dict(unicode=[0x0242]),
 	'glottalstop.IPA': dict(unicode=[0x0294]),
 	'pharyngealvoicedfricative': dict(unicode=[0x0295]),
-	'lambdastroke': dict(unicode=[0x019B]),
+	
 	'clickretroflex': dict(unicode=[0x01c3], baseGlyphs=['exclam']),
 	'clickdental': dict(unicode=[0x01C0]),
 	'clicklateral': dict(unicode=[0x01C1], baseGlyphs=['clickdental', 'clickdental']),

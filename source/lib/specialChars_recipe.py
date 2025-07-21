@@ -39,6 +39,8 @@ specialChars = {
     'Khook': [dict(glyphName='K')],
     'Lslash': [dict(glyphName='L', decompose=False), dict(glyphName='hyphen.cap', fallback=['hyphen'])],
     'Lbelt': [dict(glyphName='L', decompose=False)],
+    'Lambda.LATN': [dict(glyphName='Y', decompose=False, rotate=180)],
+    'Lambdastroke.LATN': [dict(glyphName='Lambda.LATN', fallback=['Y'], rotate=180), dict(glyphName='overlaystrokeshortcmb')],
     'Nhookleft': [dict(glyphName='N'), dict(glyphName='dotlessj', fallback=['j'])],
     'Eng': [dict(glyphName='N'), dict(glyphName='dotlessj', fallback=['j'])],
     'Eng.locl': [dict(glyphName='eng.locl', fallback=['n'])],
@@ -66,6 +68,7 @@ specialChars = {
     'Gamma.LATN': [dict(glyphName='V')],
     'Glottalstop': [dict(glyphName='question'), dict(glyphName='I')],
     'Saltillo': [dict(glyphName='quotesingle')],
+
 
     'alpha.IPA': [dict(glyphName='alpha', fallback=['u'])],
     'ae': [dict(glyphName='a'), dict(glyphName='e')],
@@ -96,6 +99,8 @@ specialChars = {
     'lslash': [dict(glyphName='l', decompose=False), dict(glyphName='slash')],
     'ldot': [dict(glyphName='l', decompose=False)],
     'lbelt': [dict(glyphName='l', decompose=False)],
+    'lambda.LATN': [dict(glyphName='lambda', fallback=['y'], rotate=180)],
+    'lambdastroke': [dict(glyphName='lambda.LATN'), dict(glyphName='hyphen')],
     'nhookleft': [dict(glyphName='n'), dict(glyphName='dotlessj')],
     'eng': [dict(glyphName='n'), dict(glyphName='dotlessj')],
     'oslash': [dict(glyphName='o', decompose=False), dict(glyphName='slash')],
@@ -125,7 +130,7 @@ specialChars = {
     'glottalstop': [dict(glyphName='question')],
     'glottalstop.IPA': [dict(glyphName='l'), dict(glyphName='question')],
     'pharyngealvoicedfricative': [dict(glyphName='l'), dict(glyphName='question', scale=(-1, 1))],
-    'lambdastroke': [dict(glyphName='lambda', fallback=['j']), dict(glyphName='hyphen')],
+    
     'clickdental': [dict(glyphName='bar')],
     'clickalveolar': [dict(glyphName='clickdental', decompose=False), dict(glyphName='equal', decompose=False)],
     
