@@ -88,17 +88,7 @@ feature locl {
                 sub I J by IJ;
                 sub i j by ij;
             } dutchij;
-         
-         language DEU exclude_dflt; #GERMAN
-            sub S S by Germandbls;
-            sub s s by germandbls;
-            sub quotedblleft by quotedblbase;
-            sub quotedblright by quotedblleft;
-
-        language FRA exclude_dflt; #FRENCH
-            sub quotedblleft by guillemotleft;
-            sub quotedblright by guillemotright;
-
+            
         language CAT; # Catalan
         lookup CAT_Ldot {
             sub l' periodcentered' l by ldot;
