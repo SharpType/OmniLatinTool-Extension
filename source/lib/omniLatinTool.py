@@ -1042,7 +1042,7 @@ class OmniLatinToolInterface(ezui.WindowController):
 
 	def getAnchorPosition(self, glyph, anchor):
 		font = CurrentFont()
-		italicSlantOffset = font.lib["com.typemytype.robofont.italicSlantOffset"] or 0
+		italicSlantOffset = font.lib.get("com.typemytype.robofont.italicSlantOffset", 0) or 0
 
 		xPosition, yPosition = 0, 0
 		xMin, yMin, xMax, yMax = glyph.bounds
