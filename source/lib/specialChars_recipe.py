@@ -58,7 +58,7 @@ specialChars = {
     'Ubar': [dict(glyphName='U', decompose=False), dict(glyphName='emdash.cap', fallback=['emdash'])],
     'Vhook': [dict(glyphName='U')],
     'Vturned': [dict(glyphName='V', decompose=False, rotate=180)],
-    'Upsilon.LATN': [dict(glyphName='Omega', fallback=['Ohm, O'], decompose=False, rotate=180)],
+    'Upsilon.LATN': [dict(glyphName='Omega', fallback=['Ohm', 'O'], decompose=False, rotate=180)],
     'Whook': [dict(glyphName='W')],
     'Chi.LATN': [dict(glyphName='X')],
     'Yturnedsans': [dict(glyphName='Y', decompose=False, rotate=180)],
@@ -67,6 +67,8 @@ specialChars = {
     'Gamma.LATN': [dict(glyphName='V')],
     'Glottalstop': [dict(glyphName='question'), dict(glyphName='I')],
     'Saltillo': [dict(glyphName='quotesingle')],
+    'Ezhreversed': [dict(glyphname='Ezh', decompose=False, scale=(-1, 1))],
+    'Mturned': [dict(glyphname='m', fallback=['M'], decompose=True, rotate=180), dict(glyphName='M')],
 
 
     'alpha.IPA': [dict(glyphName='alpha', fallback=['u'])],
@@ -123,11 +125,13 @@ specialChars = {
     'chi.LATN': [dict(glyphName='x')],
     'yhook': [dict(glyphName='y')],
     'ezh': [dict(glyphName='three'), dict(glyphName='z')],
+    'ezhreversed': [dict(glyphname='ezh', decompose=False, scale=(-1, 1))],
     'gamma.IPA': [dict(glyphName='v')],
     'saltillo': [dict(glyphName='quotesingle')],
     'glottalstop': [dict(glyphName='question')],
     'glottalstop.IPA': [dict(glyphName='l'), dict(glyphName='question')],
     'pharyngealvoicedfricative': [dict(glyphName='l'), dict(glyphName='question', scale=(-1, 1))],
+    'mturned': [dict(glyphname='m', decompose=True, rotate=180)],
     
     'clickdental': [dict(glyphName='bar')],
     'clickalveolar': [dict(glyphName='clickdental', decompose=False), dict(glyphName='equal', decompose=False)],
