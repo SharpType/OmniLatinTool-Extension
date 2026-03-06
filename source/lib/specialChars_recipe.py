@@ -67,9 +67,8 @@ specialChars = {
     'Gamma.LATN': [dict(glyphName='V')],
     'Glottalstop': [dict(glyphName='question'), dict(glyphName='I')],
     'Saltillo': [dict(glyphName='quotesingle')],
-    'Ezhreversed': [dict(glyphname='Ezh', decompose=False, scale=(-1, 1))],
-    'Mturned': [dict(glyphname='m', fallback=['M'], decompose=True, rotate=180), dict(glyphName='M')],
-
+    'Ezhreversed': [dict(glyphname='Ezh', scale=(-1, 1))],
+    'Mturned': [dict(glyphname='m', fallback=['M'], rotate=180), dict(glyphName='M')],
 
     'alpha.IPA': [dict(glyphName='alpha', fallback=['u'])],
     'ae': [dict(glyphName='a'), dict(glyphName='e')],
@@ -125,13 +124,14 @@ specialChars = {
     'chi.LATN': [dict(glyphName='x')],
     'yhook': [dict(glyphName='y')],
     'ezh': [dict(glyphName='three'), dict(glyphName='z')],
-    'ezhreversed': [dict(glyphname='ezh', decompose=False, scale=(-1, 1))],
+    'ezhreversed': [dict(glyphname='ezh', scale=(-1, 1))],
     'gamma.IPA': [dict(glyphName='v')],
     'saltillo': [dict(glyphName='quotesingle')],
     'glottalstop': [dict(glyphName='question')],
     'glottalstop.IPA': [dict(glyphName='l'), dict(glyphName='question')],
     'pharyngealvoicedfricative': [dict(glyphName='l'), dict(glyphName='question', scale=(-1, 1))],
-    'mturned': [dict(glyphname='m', decompose=True, rotate=180)],
+    'mturned': [dict(glyphname='m', decompose=False, rotate=180)],
+    'ramshorn': [dict(glyphname='gamma.IPA')],
     
     'clickdental': [dict(glyphName='bar')],
     'clickalveolar': [dict(glyphName='clickdental', decompose=False), dict(glyphName='equal', decompose=False)],
